@@ -17,6 +17,7 @@ This document is introduction to **Node.js**.
 **Node.js** apps runs in single process without creating a new thread for every request (this is related to acting as server). Of course **Node.js** provides standard asynchronous operations like I/O or network communication and instead of blocking thread it will resume when response comes back.
 
 **Node.js** implements **ECMAScript (ECMA-262)** standard and allows controlling which experimental features are available.
+                            - definuje jak by měl script vypadat
 
 ## Installation
 
