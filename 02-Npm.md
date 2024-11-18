@@ -106,7 +106,7 @@ Also package **should** contain readme file, license file.
 
 Is JSON file which contains information about package. And is defined by https://docs.npmjs.com/cli/v10/configuring-npm/package-json.
 
-Required information are **name**, **version**. Rest is optional and has some default value defined. Though you probably wan't to have **license** and **author** set.
+Required information are **name**, **version**. **Version** in **NPM** is always provided via [Semantic Versioning](https://semver.org/). Rest is optional and has some default value defined. Though you probably want to have **license** and **author** set.
 
 ## Project
 
