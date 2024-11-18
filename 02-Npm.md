@@ -81,7 +81,17 @@ Then you can install packages which will be used in project. This is done via co
 
 Optional parameter `--save-dev` or `-D` can be used which will define that installed package will be saved as **dev dependency**.
 
-Now that package is installed it can be used inside of project folder by using `npx` command from above.
+Now that package is installed it can be used inside of the project folder by using `npx` command from above.
+
+### Using existing project
+
+To use existing project we first need to have it. We can get it for example by cloning git repository - this is standard practice in companies. Normally project dependencies are not stored in git as they may have hundreds MBs.
+
+Before we can use the project we need to get all dependencies for it. That is done by command:
+
+    npm install
+
+Running `npm install` without any parameters inside of the project folder will took dependencies from `package-lock.json` (if exists) or from `package.json`.
 
 ## Package
 
