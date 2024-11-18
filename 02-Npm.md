@@ -57,6 +57,10 @@ For example:
 
 This command has three parts: `npx` which defines that we will be running command from package, `ascii-themes` [package](https://www.npmjs.com/package/ascii-themes) from which command will run, `generate 'Hello world!'` [command](https://www.npmjs.com/package/ascii-themes#usage) and its parameters - in this case command to generate text as ASCII art.
 
+This commands (if no path to package is provided like in example above) will work by looking at local project if requested package is available if not it will check npm cache folder if package is not there either it will offer to download it to cache. When package is found it will be run.
+
+**Warning**: Downloading packages this way to cache folder does not work in school!
+
 Not all packages can be used in this way.
 
 ### Creating project
@@ -77,7 +81,7 @@ Then you can install packages which will be used in project. This is done via co
 
 Optional parameter `--save-dev` or `-D` can be used which will define that installed package will be saved as **dev dependency**.
 
-Now that package is installed it can be used in project.
+Now that package is installed it can be used inside of project folder by using `npx` command from above.
 
 ## Package
 
