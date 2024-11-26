@@ -14,10 +14,14 @@ This document is introduction to **Node.js**.
 
 **Node.js** runs the **V8 JavaScript engine**, that is the same engine which powers **Chromium** based browsers. For example: Google Chrome, Microsoft Edge, Brave.
 
-**Node.js** apps runs in single process without creating a new thread for every request (this is related to acting as server). Of course **Node.js** provides standard asynchronous operations like I/O or network communication and instead of blocking thread it will resume when response comes back.
+**Node.js** apps runs in single process and single thread - without creating a new thread for every request (this is related to acting as server). Of course **Node.js** provides standard asynchronous operations like I/O or network communication and instead of blocking thread it will resume when response comes back.
 
 **Node.js** implements **ECMAScript (ECMA-262)** standard and allows controlling which experimental features are available.
                             - definuje jak by měl script vypadat
+
+Note: Single process means that application is running by itself and does not creates sub processes either of itself or it's modules. For example Visual Studio Code is not a single process app, if you check the Task Manager there is 10+ subprocesses for every Visual Studio Code open.
+
+Note: Single thread means that application is using only main thread which is less resource intensive then running multiple threads (context switching shared and duplicated memory) but harder to managed in regard of blocking.
 
 ## Installation
 

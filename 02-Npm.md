@@ -8,6 +8,7 @@ This document is introduction to **NPM**.
 - NPM possible usages
 - NPM practically
 - Package
+- Project
 
 ## NPM introduction
 
@@ -57,6 +58,10 @@ For example:
 
 This command has three parts: `npx` which defines that we will be running command from package, `ascii-themes` [package](https://www.npmjs.com/package/ascii-themes) from which command will run, `generate 'Hello world!'` [command](https://www.npmjs.com/package/ascii-themes#usage) and its parameters - in this case command to generate text as ASCII art.
 
+This commands (if no path to package is provided like in example above) will work by looking at local project if requested package is available if not it will check npm cache folder if package is not there either it will offer to download it to cache. When package is found it will be run.
+
+**Warning**: Downloading packages this way to cache folder does not work in school!
+
 Not all packages can be used in this way.
 
 ### Creating project
@@ -77,7 +82,17 @@ Then you can install packages which will be used in project. This is done via co
 
 Optional parameter `--save-dev` or `-D` can be used which will define that installed package will be saved as **dev dependency**.
 
-Now that package is installed it can be used in project.
+Now that package is installed it can be used inside of the project folder by using `npx` command from above.
+
+### Using existing project
+
+To use existing project we first need to have it. We can get it for example by cloning git repository - this is standard practice in companies. Normally project dependencies are not stored in git as they may have hundreds MBs.
+
+Before we can use the project we need to get all dependencies for it. That is done by command:
+
+    npm install
+
+Running `npm install` without any parameters inside of the project folder will took dependencies from `package-lock.json` (if exists) or from `package.json`.
 
 ## Package
 
@@ -91,12 +106,32 @@ Also package **should** contain readme file, license file.
 
 Is JSON file which contains information about package. And is defined by https://docs.npmjs.com/cli/v10/configuring-npm/package-json.
 
-Required information are **name**, **version**. Rest is optional and has some default value defined. Though you probably wan't to have **license** and **author** set.
+Required information are **name**, **version**. **Version** in **NPM** is always provided via [Semantic Versioning](https://semver.org/). Rest is optional and has some default value defined. Though you probably want to have **license** and **author** set.
+
+## Project
+
+Here is described how project looks and works. This project can be "build", "packaged" and published to **NPM** as a **package**. But in school setting we won't be creating packages which can be used by someone else but only a relatively simple website.
 
 ### Structure
 
-When working on package (project) there will be several another files/folders available which are important.
+Project of course same as package contains `package.json`, **readme**, **license**.
 
-One is `package-lock.json` here is description of which exact version and from where are installed in this project. This file includes all packages which are resolved - this means whole chains as dependencies which we are targeting may have it's own dependencies.
+And `package-lock.json` here is description of which exact version and from where are installed in this project. This file includes all packages which are resolved - this means whole chains as dependencies which we are targeting may have it's own dependencies.
 
 Another is `node_modules` folder where are resolved packages installed.
+
+Additional file can be `.npmrc` which holds npm configuration.
+
+And then of course files of project itself.
+
+### package.json
+
+This file has same job as in package and that is holding information about project/package.
+
+In addition to it there is a section `scripts` which holds scripts which can be executed. That is done by running command:
+
+    npm run <script name>
+
+Scripts which can be run from here are either installed packages, npm commands, scripts files inside node or other command lines or even other applications.
+
+Before running given script their **pre** script will run and after it's **post** script will run. Pre script is named `pre<script name>` and post script is named `post<script name>`. So if we have script with name `build` then NPM will run `prebuild` (if exists) then `build` then `postbuild` (if exists).
